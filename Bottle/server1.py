@@ -5,6 +5,8 @@
 
 from bottle import template, Bottle, static_file, request, redirect
 import bottle
+
+
 from bottle import jinja2_template # jinia2 tpl model ==>Django
 bottle.TEMPLATE_PATH.append('./templates/')
 root = Bottle()

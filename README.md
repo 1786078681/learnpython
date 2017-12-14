@@ -39,8 +39,40 @@ python example
         c. WSGI进行配置
         
     2. flask
+        from flask import Flask
         - 13点
-        
+        - cookie
+            resp = make_response(render_template("index.html", name="Session Test"))
+            resp.cookie.set(k,v,path,expire...)
+        - session
+            app.secret_key = 'f3dv&89)_Z./,?~a*21@#2'
+            session['name']
+            session['name'] = xxx
+        - MiddleWare
+            class Foo:
+                def __init__(self, w):self.w=w
+                def __call__(self, *args, **kwargs):
+                    return self.w(*args, **kwargs)
+            app.wsgi_app = Foo(app.wsgi_app)
+            app.run()
+        - message
+            flash(val)
+            get_flashed_messages() # Get all in once
+            
+            tpl:
+            <body>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                    <ul class=flashes>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                {% endwith %}
+            </body>
+            
+            
     3. Tornado
         - 异步非阻塞的框架 Node.js
         

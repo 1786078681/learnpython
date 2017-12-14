@@ -5,7 +5,8 @@
 # @Site    : 
 # @File    : flask_server.py
 # @Software: PyCharm
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, flash, get_flashed_messages
+from flask import session
 
 app = Flask(__name__)
 
@@ -33,6 +34,16 @@ def hello():
     # return redirect('/test/about')
     url = url_for('test', page_name="about") # /test/
     return redirect(url)
+
+@app.route("/home/")
+def home():
+
+
+    session["name"] = "sesion name"
+    print(session["name"])
+
+    return render_template("login.html")
+
 
 if __name__ == "__main__":
     app.run(port=8004)
