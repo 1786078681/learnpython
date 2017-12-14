@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    % title=""
+    <title>{{ title or "No " }}Title</title>
+    <link href="/static/admin/bottle.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+{{ title or "No " }} Title
+<h3>Bottle Learn re</h3>
+<h5>{{ name }}</h5>
+<%
+import time
+t = time.asctime()
+
+%>
+<%
+    print(name.title())
+    name = name.title().strip()
+
+    if name == "AAA":
+        name = "BB"
+    else:
+        name = name + "ssss"
+%>
+<span class="red">{{ t }}<br>{{ name }}</span>
+
+</body>
+</html>

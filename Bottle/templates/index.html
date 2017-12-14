@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{ name }}
+{{ user_list }}
+% tmp = "tmp var"
+    <ul>
+        % for item in user_list:
+            <li>{{ item['id'] }} - {{ item['name'] }}: age:{{ item['age'] }}</li>
+        % end
+    </ul>
+
+{{ tmp }}
+<%
+import time
+t=time.time()
+%>
+{{ t }}
+<hr />
+% include("login.html", login="dao ru include")
+{{ get('age', '123') }}
+
+{{ !chm() }} # ! convert to HTML
+</body>
+</html>
