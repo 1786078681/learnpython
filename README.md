@@ -76,24 +76,24 @@ python example
     
     
 # ****ELSE****
-router is three:
-
-pattern=((r"^$", xxx),)
-
-@root.route("/")
-
-url=[('/?P<controller>\w+/?P<action>\w+'),]
-
-from bottle import request
-
-request.forms # GET and POST request data# form
-request.query # GET method request data  ?page=3&..
-request.body  # POST ..data
-request.params # GET or POST data, forms or ?page=xx..
-#
-root.mount("games", server1.games) # server1.games = Bottle()
-root.mount("users", server1.users)
-root.mount("app02", app02.root)
-bottle.TEMPLATE_PATH.append("./tpl/"), add template dir
+    router is three:
+    
+    pattern=((r"^$", xxx),)
+    
+    @root.route("/")
+    
+    url=[('/?P<controller>\w+/?P<action>\w+'),]
+    
+    from bottle import request
+    
+    request.forms # GET and POST request data# form
+    request.query # GET method request data  ?page=3&..
+    request.body  # POST ..data
+    request.params # GET or POST data, forms or ?page=xx..
+    #
+    root.mount("games", server1.games) # server1.games = Bottle()
+    root.mount("users", server1.users)
+    root.mount("app02", app02.root)
+    bottle.TEMPLATE_PATH.append("./tpl/"), add template dir
     
     
