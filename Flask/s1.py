@@ -5,8 +5,9 @@
 # @Site    : 
 # @File    : s1.py
 # @Software: PyCharm
-from flask import Flask, session, redirect, render_template, flash, get_flashed_messages, request, make_response
-
+from flask import Flask, session, redirect, render_template, flash, get_flashed_messages, request, make_response,\
+    abort, escape
+import json
 app = Flask(__name__)
 
 @app.route("/index/")
@@ -22,9 +23,27 @@ def index():
 
 @app.route("/")
 def home():
+    s = [{"name": "tom", 'age':1}]
+    # return json.dumps(s)
+    abort(404, 'Nothing')
+app.secret_key = 'f3dv&89)_Z./,?~a*21@#2'
+
+from flask import Flask, abort, render_template
+
+app = Flask(__name__)
+
+
+@app.route('/index/', methods=['GET', 'POST'])
+def index():
     return "OK"
 
-app.secret_key = 'f3dv&89)_Z./,?~a*21@#2'
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('page_not_found.html'), 404
+
+
+
 
 if __name__ == "__main__":
 

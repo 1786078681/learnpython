@@ -10,14 +10,13 @@ from flask import session
 
 app = Flask(__name__)
 
-
-def wupeiqi():
-    return '<h1>Wupeiqi</h1>'
+def fun1():
+    return '<h1>Flask Web</h1>'
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    return render_template('login.html', ww=wupeiqi, name="Flask name",
+    return render_template('login.html', ww=fun1, name="Flask name",
                            k1=['a', 'b'], k2=(1,'a'), k3={"name": "tome", "age": 28}
 
                            )

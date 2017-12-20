@@ -1,20 +1,14 @@
-# from django.test import TestCase
+import requests
+import concurrent.futures
+import time
 
-# Create your tests here.
-
-
-
-
-
-from flask import Flask
-
-app = Flask(__name__)
+start = time.time()
+def fun1():
+    requests.get("http://localhost:9000/users/login?next=/")
 
 
-@app.route("/")
-def hello():
-    return "Hello World!"
+with concurrent.futures.ThreadPoolExecutor(max_workers=9999) as executor:
+    for i in range(2000):
+        executor.submit(fun1)
 
-
-if __name__ == "__main__":
-    app.run()
+print(time.time() - start)
