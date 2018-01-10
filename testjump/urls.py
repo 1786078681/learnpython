@@ -10,5 +10,6 @@ urlpatterns = [
     # url(r'^books/', include("backends.urls.view_urls", namespace="books"))
     # url(r'test/$', views.test),
     url(r'^api/', include("rest.urls.api_url", namespace="api")),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^$', views.testAsio)
 ]

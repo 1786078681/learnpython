@@ -22,6 +22,6 @@ class Book(models.Model):
 
 class Author(models.Model):
     name = models.CharField(max_length=32)
-    age = models.DateField()
+    age = models.IntegerField()
     def __str__(self):
         return self.name

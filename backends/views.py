@@ -64,8 +64,12 @@ def test(request):
 
     return render(request, "test.html", {"obj": obj})
 
-
-
+import time
+from django.core.cache import cache
+def testAsio(request):
+    print(request.environ.get("HTTP_USER_AGENT"))
+    print(cache.get("val"))
+    return HttpResponse("hello")
 
 
 
