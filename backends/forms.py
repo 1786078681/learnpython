@@ -2,19 +2,18 @@
 #17-10-30 下午5:42
 #Add
 from backends.models import Test, Author, Book
+from django.forms import ModelForm
 from django import forms
-from django.forms import forms as dforms
-
-class AuthorForm(forms.Form):
-    name = forms.CharField()
-    age = forms.CharField()
-
-    def clean_age(self):
-        age = self.cleaned_data.get("age")
-        if age.isdigit():
-            self.add_error("age","age must Integer %s" % age )
-
-        return age
+# class AuthorForm(forms.Form):
+#     name = forms.CharField()
+#     age = forms.CharField()
+#
+#     def clean_age(self):
+#         age = self.cleaned_data.get("age")
+#         if age.isdigit():
+#             self.add_error("age","age must Integer %s" % age )
+#
+#         return age
 
 
 # class TestModelForm(ModelForm):
@@ -35,4 +34,19 @@ class AuthorForm(forms.Form):
 #     class Meta:
 #         model = Author
 #         fields = ("name", "age")
+
+
+class GameServerInfoForm(ModelForm):
+
+    class Meta:
+        model = ""
+        fields = "__all__"
+        help_texts = {
+            "name": "input your name",
+            # ...
+        }
+        widgets = {
+            "age": forms.IntegerField(attrs={"value": "", "class": "form-control form-data", "placeholder": "input a integer"}),
+            "name": forms.TextInput(attrs={"max-length": 25, })
+        }
 
