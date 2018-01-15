@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, HttpResponse
 
 # Create your views here.
 # from django.views.generic import TemplateView,CreateView, UpdateView
@@ -71,8 +71,13 @@ def testAsio(request):
     print(cache.get("val"))
     return HttpResponse("hello")
 
+from backends.models import MyUrl
+def testurl(req):
 
+    a = MyUrl.objects.filter(path_info=req.path_info.strip('/')).first()
 
+    return redirect(a.real_path)
+    # return HttpResponse(req.path_info)
 
 
 

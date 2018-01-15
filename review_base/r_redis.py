@@ -9,14 +9,14 @@ import redis
 # print(conn.get('foo'))
 
 
-
-pool = redis.ConnectionPool(host='localhost', port=6379, db=5)
-
-conn = redis.Redis(connection_pool=pool)
-
-print(conn.get('foo'))
-print(conn.get('name').decode('utf-8'))
-conn.bitcount('online')
+#
+# pool = redis.ConnectionPool(host='localhost', port=6379, db=5)
+#
+# conn = redis.Redis(connection_pool=pool)
+#
+# print(conn.get('foo'))
+# print(conn.get('name').decode('utf-8'))
+# conn.bitcount('online')
 
 '''
 set(name, value, ex=None, px=None, nx=False, xx=False)
@@ -62,3 +62,65 @@ hexists k k2
 8) "10"
 
 '''
+
+import time
+# redis-py默认在执行每次请求都会创建（连接池申请连接）和断开（归还连接池）一次连接操作，如果想要在一次请求中指定多个命令，则可以使用pipline实现一次请求指定多个命令，并且默认情况下一次pipline 是原子性操作。
+pool = redis.ConnectionPool(host='localhost', port=6379, db=6)
+r = redis.Redis(connection_pool=pool)
+
+# r.set('name', 'no pipe')
+# time.sleep(5)
+# r.set('role', 'no pipe2')
+
+
+pipe = r.pipeline(transaction=True)
+
+pipe.set('name', 'abcd')
+time.sleep(5)
+pipe.set('role', 'sb')
+
+pipe.execute()  # set keys in this
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

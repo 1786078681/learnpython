@@ -6,10 +6,14 @@ import gevent
 from gevent import monkey, socket
 monkey.patch_socket()
 import requests
+import time
 urls = ['www.google.com.hk', 'www.example.com', 'www.python.org']
 
 def f1(url):
     response = requests.get(url)
+    print('sleep no do ')
+    time.sleep(5)
+
     print(response.headers)
 
 

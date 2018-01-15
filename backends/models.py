@@ -25,3 +25,9 @@ class Author(models.Model):
     age = models.IntegerField()
     def __str__(self):
         return self.name
+
+class MyUrl(models.Model):
+    name = models.CharField(max_length=32, null=True, blank=True)
+    path_info = models.CharField(max_length=20)
+    real_path = models.CharField(max_length=255, null=True)
+

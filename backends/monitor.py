@@ -17,7 +17,7 @@ class UserAdminRequireMixin(UserPassesTestMixin):
         return True
 
 
-class GameServerDetail(UserAdminRequireMixin, UpdateView):
+class GameServerDetail(UserAdminRequireMixin, TemplateView):
     model = ""
     template_name = ""
     form_class = ""
@@ -29,4 +29,5 @@ class GameServerDetail(UserAdminRequireMixin, UpdateView):
             # ....
         })
         # ...
+
         return super(GameServerDetail, self).__init__(**kwargs)

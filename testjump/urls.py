@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
 
-from backends import views
+from backends import views, models
+
 urlpatterns = [
     #
     # url(r'^api/test/', include("backends.urls.api_urls", namespace="api")),
@@ -11,5 +12,13 @@ urlpatterns = [
     # url(r'test/$', views.test),
     url(r'^api/', include("rest.urls.api_url", namespace="api")),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^$', views.testAsio)
+    # url(r'^asio$', views.testAsio),
+
 ]
+
+l = [url(r'^%s/$' % a.path_info, views.testurl) for a in models.MyUrl.objects.all()]
+
+urlpatterns += l
+#
+# l = [a.path_info for a in models.MyUrl.objects.all()]
+# print(l)

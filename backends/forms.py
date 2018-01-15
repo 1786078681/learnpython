@@ -2,7 +2,7 @@
 #17-10-30 下午5:42
 #Add
 from backends.models import Test, Author, Book
-from django.forms import ModelForm
+# from django.forms import ModelForm
 from django import forms
 # class AuthorForm(forms.Form):
 #     name = forms.CharField()
@@ -36,17 +36,19 @@ from django import forms
 #         fields = ("name", "age")
 
 
-class GameServerInfoForm(ModelForm):
+class GameServerInfoForm(forms.ModelForm):
 
     class Meta:
-        model = ""
+        model = Book
         fields = "__all__"
         help_texts = {
             "name": "input your name",
             # ...
         }
         widgets = {
-            "age": forms.IntegerField(attrs={"value": "", "class": "form-control form-data", "placeholder": "input a integer"}),
-            "name": forms.TextInput(attrs={"max-length": 25, })
+            "author": forms.TextInput(
+                attrs={"value": "", "class": "form-control form-data", "placeholder": "input a integer"}),
+            "name": forms.TextInput(
+                attrs={"max-length": 25})
         }
 
